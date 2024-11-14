@@ -158,6 +158,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 2107025993139506500}
   _networkObjectCache: {fileID: 2107025993139506500}
+  playerCameraObject: {fileID: 2369269890772988347}
   playerCamera: {fileID: 5817641025765624501}
   fov: 60
   invertCamera: 0
@@ -390,7 +391,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2369269890772988347}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &6544673221719099923
 MonoBehaviour:
   m_ObjectHideFlags: 0

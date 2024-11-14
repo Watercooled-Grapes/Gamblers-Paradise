@@ -22,7 +22,8 @@ public class FirstPersonController : NetworkBehaviour
 
     #region Camera Movement Variables
 
-    public Camera playerCamera;
+    public GameObject playerCameraObject;
+    [HideInInspector] public Camera playerCamera;
 
     public float fov = 60f;
     public bool invertCamera = false;
@@ -139,6 +140,7 @@ public class FirstPersonController : NetworkBehaviour
         if (!IsOwner)
         {
             gameObject.GetComponent<FirstPersonController>().enabled = false;
+            playerCameraObject.SetActive(false);
         }
     }
         
@@ -146,7 +148,7 @@ public class FirstPersonController : NetworkBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
+        playerCamera = playerCameraObject.GetComponent<Camera>();
         crosshairObject = GetComponentInChildren<Image>();
 
         // Set internal variables
@@ -572,7 +574,7 @@ public class FirstPersonController : NetworkBehaviour
         GUILayout.Label("Camera Setup", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 13 }, GUILayout.ExpandWidth(true));
         EditorGUILayout.Space();
 
-        fpc.playerCamera = (Camera)EditorGUILayout.ObjectField(new GUIContent("Camera", "Camera attached to the controller."), fpc.playerCamera, typeof(Camera), true);
+        fpc.playerCameraObject = (GameObject)EditorGUILayout.ObjectField(new GUIContent("Camera Wrapper Object", "Camera attached to the controller."), fpc.playerCameraObject, typeof(GameObject), true);
         fpc.fov = EditorGUILayout.Slider(new GUIContent("Field of View", "The camera’s view angle. Changes the player camera directly."), fpc.fov, fpc.zoomFOV, 179f);
         fpc.cameraCanMove = EditorGUILayout.ToggleLeft(new GUIContent("Enable Camera Rotation", "Determines if the camera is allowed to move."), fpc.cameraCanMove);
 
