@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "House-Always-Wins.sln"
+    "dotnet.defaultSolution": "Gamblers-Paradise.sln"
 }
