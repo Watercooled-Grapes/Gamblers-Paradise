@@ -311,6 +311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eddbb6bec1781843b3612c137df72ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseAcceleration: 10
+  baseWalkSpeed: 5
+  baseSprintSpeed: 7
+  baseJump: 5
 --- !u!1 &2369269890772988347
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,6 +856,14 @@ PrefabInstance:
     - target: {fileID: 1024860913751546, guid: 194f8fbf67729fd40936b3465af2cc47, type: 3}
       propertyPath: m_Name
       value: Character_Male_Face_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338843732228262, guid: 194f8fbf67729fd40936b3465af2cc47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396664550130070, guid: 194f8fbf67729fd40936b3465af2cc47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4780083634823512, guid: 194f8fbf67729fd40936b3465af2cc47, type: 3}
       propertyPath: m_LocalPosition.x
