@@ -141,6 +141,11 @@ public class FirstPersonController : NetworkBehaviour
         {
             gameObject.GetComponent<FirstPersonController>().enabled = false;
             playerCameraObject.SetActive(false);
+
+            // get weapon object and bind to player camera so it moves with player
+            if (TryGetComponent(out PlayerWeapon playerWeapon)) {
+                playerWeapon.InitCamera(playerCamera.transform);
+            }
         }
     }
         
