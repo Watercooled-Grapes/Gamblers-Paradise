@@ -5,11 +5,7 @@ using FishNet.Demo.AdditiveScenes;
 
 public class ItemManager : MonoBehaviour
 {
-    public float baseAcceleration = 10f;
-    public float baseWalkSpeed = 5f;
-    public float baseSprintSpeed = 7f;
-    public float baseJump = 5f;
-
+    public PlayerBaseStats bs;
     public Dictionary<string, int> items;
     private FirstPersonController playerStats;
 
@@ -18,6 +14,10 @@ public class ItemManager : MonoBehaviour
         //TODO: find a way to set FirstPersonController stats to base stats automatically
         items = new Dictionary<string, int>();
         playerStats = gameObject.GetComponent<FirstPersonController>();
+
+        playerStats.walkSpeed = bs.walkSpeed;
+        playerStats.sprintSpeed = bs.sprintSpeed;
+        playerStats.jumpPower = bs.jumpPower;
     }
 
     void OnTriggerEnter (Collider other)
@@ -34,7 +34,7 @@ public class ItemManager : MonoBehaviour
         // define item mechanics here, use dictionary to determine stack size
         switch (itemName) {
             case "soda":
-                playerStats.sprintSpeed = baseSprintSpeed + 2*items[itemName];
+                playerStats.sprintSpeed = bs.sprintSpeed + 2*items[itemName];
                 break;
             default:
                 Debug.Log("picking up an item that does not have an assigned type (or its a typo)");
