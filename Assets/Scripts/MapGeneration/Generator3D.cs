@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Component.Spawning;
 using UnityEngine;
 using Random = System.Random;
 using Graphs;
@@ -18,7 +19,7 @@ public class Generator3D : MonoBehaviour {
 
     [SerializeField] private GameObject stairPrefab;
     [SerializeField] private GameObject tallStairPrefab;
-    [SerializeField] private GameObject spawnPrefab;
+    [SerializeField] private GameObject networkManager;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject wallPrefab;
     [SerializeField] private GameObject roofPrefab;
@@ -66,9 +67,6 @@ public class Generator3D : MonoBehaviour {
             bool add = true;
             Room newRoom = new Room(location, roomSize);
             Room buffer = new Room(location + new Vector3Int(-1, 0, -1), roomSize + new Vector3Int(2, 0, 2));
-
-            // Room newRoom = new Room(location + Vector3Int.up*(roomSize.y/2), roomSize);
-            // Room buffer = new Room(location + new Vector3Int(-1, 0, -1) + Vector3Int.up*(roomSize.y/2), roomSize + new Vector3Int(2, 0, 2));
             
             foreach (var room in rooms) {
                 if (Room.Intersect(room, buffer)) {
@@ -280,8 +278,14 @@ public class Generator3D : MonoBehaviour {
     void PlaceStartRoom(Vector3Int locationInt, Vector3Int size)
     {
         PlaceRoom(locationInt, size);
-        GameObject p = Instantiate(playerPrefab, locationInt + new Vector3((size.x - 1) / 2f, Mathf.Floor(size.y/2f), (size.z - 1) / 2f) + Vector3.up/4, Quaternion.identity);
-        p.GetComponent<Transform>().localScale = p.GetComponent<Transform>().localScale/5;
+        PlayerSpawner playerSpawner = networkManager.GetComponent<PlayerSpawner>();
+        GameObject g = new GameObject();
+        Transform t = g.transform;
+        t.position = locationInt + new Vector3((size.x - 1) / 2f, Mathf.Floor(size.y / 2f), (size.z - 1) / 2f) +
+                     Vector3.up / 4;
+        t.rotation = Quaternion.Euler(0, 0, 0);
+        playerSpawner.Spawns[0] = t;
+        networkManager.SetActive(true);
     }
     void PlaceRoom(Vector3Int locationInt, Vector3Int size) {
         int floorCountX = Mathf.Max(1, size.x);
