@@ -134,6 +134,8 @@ public class FirstPersonController : NetworkBehaviour
 
     #endregion
 
+    [SerializeField] private int playerSelfLayer = 7;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -141,10 +143,15 @@ public class FirstPersonController : NetworkBehaviour
         {
             gameObject.GetComponent<FirstPersonController>().enabled = false;
             playerCameraObject.SetActive(false);
-
-            // get weapon object and bind to player camera so it moves with player
-            if (TryGetComponent(out PlayerWeapon playerWeapon)) {
-                playerWeapon.InitCamera(playerCamera.transform);
+        }
+        else
+        {
+            if (TryGetComponent(out PlayerWeapon playerWeapon)) 
+            { 
+                playerWeapon.InitializeWeapons(playerCamera.transform);
+                gameObject.layer = playerSelfLayer;
+                foreach (Transform child in transform)
+                    child.gameObject.layer = playerSelfLayer;
             }
         }
     }

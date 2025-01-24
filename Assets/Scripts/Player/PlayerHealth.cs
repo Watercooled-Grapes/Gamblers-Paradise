@@ -8,32 +8,34 @@ public class PlayerHealth : NetworkBehaviour
 
     private int _currentHealth;
 
-    private void Awake() {
-        _currentHealth = maxHealth;
-    }
-
     public override void OnStartClient()
     {
         base.OnStartClient();
 
-        // if (!IsOwner) { // disable for local unity testing (TODO: switch health system to an abstract class to make other things shootable)
-        //     enabled = false;
-        //     return;
-        // }
+        if (!IsOwner)
+        {
+            enabled = false;
+            return;
+        }
+        _currentHealth = maxHealth;
+    }
+    public void TakeDamage(int damage)
+    {
+        TakeDamage(damage);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void TakeDamage(int damage) {
+    private void TakeDamageServer(int damage)
+    {
         _currentHealth -= damage;
-
-        Debug.Log(_currentHealth);
-
-        if (_currentHealth <= 0) {
+        Debug.Log("Player Health: " + _currentHealth);
+        if (_currentHealth <= 0)
+        {
             Die();
         }
     }
-
-    private void Die() {
-        Destroy(gameObject); // placeholder
+    private void Die()
+    {
+        Debug.Log("Played died");
     }
 }
