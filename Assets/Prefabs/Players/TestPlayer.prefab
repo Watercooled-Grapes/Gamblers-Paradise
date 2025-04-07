@@ -162,7 +162,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 2107025993139506500}
   playerCameraObject: {fileID: 2369269890772988347}
   playerCamera: {fileID: 5817641025765624501}
-  fov: 60
+  fov: 90
   invertCamera: 0
   cameraCanMove: 1
   mouseSensitivity: 2
@@ -185,7 +185,7 @@ MonoBehaviour:
   sprintSpeed: 7
   sprintDuration: 5
   sprintCooldown: 0.5
-  sprintFOV: 80
+  sprintFOV: 90
   sprintFOVStepTime: 10
   useSprintBar: 1
   hideBarWhenFull: 1
@@ -225,6 +225,11 @@ MonoBehaviour:
   NetworkBehaviours:
   - {fileID: 6642643377008483049}
   - {fileID: 745311387352384819}
+  - {fileID: 1279935463766413883}
+  - {fileID: 5597593786472515176}
+  - {fileID: 5926164592054410451}
+  - {fileID: 2922149262449377041}
+  - {fileID: 4397950811678420031}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -257,7 +262,7 @@ MonoBehaviour:
   SerializedTransformProperties:
     Position: {x: -0.33117485, y: 2.1, z: -0.9157162}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
+    LocalScale: {x: 0.25, y: 0.25, z: 0.25}
 --- !u!114 &745311387352384819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,9 +318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af206a50ebe8454aac1675d0d153c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 2107025993139506500}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2107025993139506500}
   weapons:
   - {fileID: 5926164592054410451}
   - {fileID: 4397950811678420031}
@@ -333,9 +338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4667c26e6637bc4090254969e653633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 2107025993139506500}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2107025993139506500}
   maxHealth: 100
 --- !u!1 &2369269890772988347
 GameObject:
@@ -365,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 2369269890772988347}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.001, z: 0.246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -705,9 +710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa65bb62433aee4280fc597a909b595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 2107025993139506500}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2107025993139506500}
   damage: 5
   weaponHitLayers:
     serializedVersion: 2
@@ -1319,9 +1324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2f58e1d2cf4af45a98c355e349eff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 2107025993139506500}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2107025993139506500}
   damage: 100
   weaponHitLayers:
     serializedVersion: 2
@@ -1513,9 +1518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d01829e322d5947a00c82b2f68cda7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 2107025993139506500}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2107025993139506500}
   damage: 20
   weaponHitLayers:
     serializedVersion: 2
@@ -1793,7 +1798,7 @@ Transform:
   m_GameObject: {fileID: 8856083095701196553}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.66, z: -0.15}
+  m_LocalPosition: {x: 0, y: 0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

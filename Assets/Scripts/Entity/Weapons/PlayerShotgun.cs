@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Weapons
+namespace Entity.Weapons
 {
     public class PlayerShotgun: APlayerWeapon
     {

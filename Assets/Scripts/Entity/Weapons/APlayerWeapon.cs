@@ -1,8 +1,7 @@
-    
 using FishNet.Object;
 using UnityEngine;
 
-namespace Weapons
+namespace Entity.Weapons
 {
     public abstract class APlayerWeapon : NetworkBehaviour
     {
@@ -25,7 +24,7 @@ namespace Weapons
             if (!Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out RaycastHit hit, maxRange,
                     weaponHitLayers))
                 return;
-            if (hit.transform.TryGetComponent(out PlayerHealth health))
+            if (hit.transform.TryGetComponent(out EntityHealthManager health))
             {
                 health.TakeDamage(damage);
             }
